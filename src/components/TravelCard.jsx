@@ -1,4 +1,11 @@
-function TravelCard({ name, country, description, rating }) {
+function TravelCard({
+  name,
+  country,
+  description,
+  rating,
+  favourites,
+  onToggleFavourite,
+}) {
   return (
     <div
       style={{
@@ -23,6 +30,9 @@ function TravelCard({ name, country, description, rating }) {
         {"★".repeat(rating)}
         {"☆".repeat(5 - rating)}
       </p>
+      <button onClick={() => onToggleFavourite(name)}>
+        {favourites.includes(name) ? "❤️" : "🤍"}
+      </button>
     </div>
   );
 }

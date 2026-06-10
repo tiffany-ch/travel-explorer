@@ -1,6 +1,6 @@
 import TravelCard from "./TravelCard";
 
-function DestinationList({ destinations }) {
+function DestinationList({ destinations, favourites, onToggleFavourite }) {
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
       {destinations.map((dest) => (
@@ -10,6 +10,8 @@ function DestinationList({ destinations }) {
           country={dest.country}
           description={dest.description}
           rating={dest.rating}
+          favourites={favourites}
+          onToggleFavourite={onToggleFavourite}
         />
       ))}
     </div>
