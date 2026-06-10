@@ -1,4 +1,7 @@
 import TravelCard from "./components/TravelCard";
+import DestinationList from "./components/DestinationList";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const destinations = [
   {
@@ -33,20 +36,11 @@ const destinations = [
 
 function App() {
   return (
-    <div style={{ padding: "24px" }}>
-      <h1>Travel Explorer</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-        {destinations.map((dest) => (
-          <TravelCard
-            key={dest.id}
-            name={dest.name}
-            country={dest.country}
-            description={dest.description}
-            rating={dest.rating}
-          />
-        ))}
-      </div>
-    </div>
+    <>
+      <Header title="Travel Explorer" subtitle="Discover your next adventure" />
+      <DestinationList destinations={destinations} />
+      <Footer />
+    </>
   );
 }
 
