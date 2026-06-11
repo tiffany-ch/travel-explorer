@@ -2,16 +2,20 @@ import TravelCard from "./TravelCard";
 
 function DestinationList({ destinations, favourites, onToggleFavourite }) {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+        gap: "16px",
+        padding: "16px",
+      }}
+    >
       {destinations.map((dest) => (
         <TravelCard
-          key={dest.id}
-          name={dest.name}
-          country={dest.country}
-          description={dest.description}
-          rating={dest.rating}
-          favourites={favourites}
-          onToggleFavourite={onToggleFavourite}
+          key={dest.codes.alpha_3}
+          country={dest}
+          isFavourited={favourites.includes(dest.codes.alpha_3)}
+          onToggleFavourite={() => onToggleFavourite(dest.codes.alpha_3)}
         />
       ))}
     </div>

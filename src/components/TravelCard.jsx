@@ -1,11 +1,4 @@
-function TravelCard({
-  name,
-  country,
-  description,
-  rating,
-  favourites,
-  onToggleFavourite,
-}) {
+function TravelCard({ country, isFavourited, onToggleFavourite }) {
   return (
     <div
       style={{
@@ -15,24 +8,21 @@ function TravelCard({
         maxWidth: "300px",
       }}
     >
-      <div
+      <img
+        src={country.flag.url_png}
+        alt={`Flag of ${country.names.common}`}
         style={{
-          height: "120px",
-          backgroundColor: "#2DD4BF",
-          borderRadius: "8px",
+          width: "100%",
+          height: 160,
+          objectFit: "cover",
           marginBottom: "12px",
         }}
       />
-      <h3>{name}</h3>
-      <p style={{ color: "#666" }}>{country}</p>
-      <p>{description}</p>
-      <p>
-        {"★".repeat(rating)}
-        {"☆".repeat(5 - rating)}
-      </p>
-      <button onClick={() => onToggleFavourite(name)}>
-        {favourites.includes(name) ? "❤️" : "🤍"}
-      </button>
+      <h3>{country.names.common}</h3>
+      <p>Region: {country.region}</p>
+      <p>Capital: {country.capitals?.[0]?.name || "N/A"}</p>
+      <p>Population: {country.population?.toLocaleString()}</p>
+      <button onClick={onToggleFavourite}>{isFavourited ? "❤️" : "🤍"}</button>
     </div>
   );
 }
